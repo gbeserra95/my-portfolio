@@ -1,6 +1,7 @@
 import Head from 'next/head'
-import Cover from '../src/patterns/Cover'
 import Navbar from '../src/patterns/Navbar'
+import Cover from '../src/patterns/Cover'
+import About from '../src/patterns/About'
 
 export default function Home() {
   return (
@@ -13,6 +14,7 @@ export default function Home() {
       <Navbar />
       <main>
         <Cover />
+        <About />
       </main>
     </>
   )

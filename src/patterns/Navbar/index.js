@@ -187,7 +187,7 @@ export default function Navbar() {
                     />
                 </div>
                 <ul>
-                    <li active>Home</li>
+                    <li>Home</li>
                     <li>About</li>
                     <li>Portfolio</li>
                     <li>Contact</li>

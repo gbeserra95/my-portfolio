@@ -51,7 +51,7 @@ const Line = styled.div`
 export default function DashedArrow({ children }) {
     return (
         <Wrapper>
-            <h3>{children}</h3>
+            {children}
             <LineWrapper>
                 <Line />
             </LineWrapper>
