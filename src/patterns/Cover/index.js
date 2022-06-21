@@ -22,7 +22,7 @@ const Content = styled.div`
     width: 100%;
     display: flex;
     flex-direction: column;
-    padding-bottom: 16px;
+    padding-bottom: 48px;
 `
 
 export default function Cover() {

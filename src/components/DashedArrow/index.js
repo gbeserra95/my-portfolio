@@ -18,7 +18,7 @@ const LineWrapper = styled.div`
     display: flex;
     width: 18px;
     margin: 8px auto;
-    height: 30vh;
+    height: 25vh;
     justify-content: center;
 
     &::after {

@@ -66,7 +66,7 @@ theme = createTheme(theme,
             h3: {
                 fontSize: '32px',
                 fontWeight: '500',
-                margin: '0',
+                margin: '0 0 32px 0',
                 padding: '0',
                 fontFamily: 'Kanit',
             },
@@ -76,6 +76,9 @@ theme = createTheme(theme,
                 margin: '0',
                 padding: '0',
                 fontFamily: 'Kanit',
+                [theme.breakpoints.down('sm')]: {
+                    fontSize: '20px'
+                }
             },
             p: {
                 fontSize: '20px',
@@ -86,6 +89,12 @@ theme = createTheme(theme,
                 span: {
                     color: theme.palette.highlight.main,
                     fontWeight: 600
+                },
+                [theme.breakpoints.down('lg')]: {
+                    fontSize: '18px'
+                },
+                [theme.breakpoints.down('sm')]: {
+                    fontSize: '16px'
                 }
             }
         }
