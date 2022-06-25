@@ -6,7 +6,7 @@ import LinkedInIcon from '@mui/icons-material/LinkedIn'
 import MenuIcon from '@mui/icons-material/Menu'
 import CloseIcon from '@mui/icons-material/Close'
 
-import ResumeButton from "../../components/ResumeButton"
+import StyledButton from "../../components/StyledButton"
 
 import { Container, useMediaQuery } from "@mui/material"
 import styled from "@emotion/styled"
@@ -175,7 +175,7 @@ export default function Navbar() {
                             <ListItem>About</ListItem>
                             <ListItem>Portfolio</ListItem>
                             <ListItem>Contact</ListItem>
-                            <ListItem><ResumeButton>Resume</ResumeButton></ListItem>
+                            <ListItem><StyledButton>Resume</StyledButton></ListItem>
                         </ListContainer>
                     }
                 </Navigation>
@@ -191,7 +191,7 @@ export default function Navbar() {
                     <li>About</li>
                     <li>Portfolio</li>
                     <li>Contact</li>
-                    <li><ResumeButton>Resume</ResumeButton></li>
+                    <li><StyledButton color="secondary">Resume</StyledButton></li>
                 </ul>
 
             </Overflow>
