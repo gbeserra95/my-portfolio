@@ -6,6 +6,10 @@ import styled from "@emotion/styled"
 const Wrapper = styled.section`
     width: 100%;
     background-color: ${props => props.theme.palette.bg.light};
+
+    ${props => props.theme.breakpoints.down('md')} {
+        padding: 64px 0 0 0;
+    }
 `
 
 const Content = styled.div`
@@ -15,7 +19,7 @@ const Content = styled.div`
     flex-direction: column;
 
     ${props => props.theme.breakpoints.down('md')} {
-        height: fit-content;
+        height: 100%;
     }
 `
 
@@ -39,7 +43,7 @@ export default function About() {
     return (
         <Wrapper id="about">
             <Container maxWidth="xl">
-                <Grid container marginTop={{xs: 6, sm: 6, md: 6, lg: 0}}>
+                <Grid container>
                     <Grid item xs={12} sm={12} md={6} lg={6}>
                         <Content>
                             <Typography variant="h3" color="primary">About me</Typography>

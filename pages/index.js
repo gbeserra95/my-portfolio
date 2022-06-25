@@ -4,6 +4,7 @@ import Cover from '../src/patterns/Cover'
 import About from '../src/patterns/About'
 import Portfolio from '../src/patterns/Portfolio'
 import Contact from "../src/patterns/Contact"
+import Footer from "../src/patterns/Footer"
 
 export default function Home() {
   return (
@@ -20,6 +21,7 @@ export default function Home() {
         <Portfolio />
         <Contact />
       </main>
+      <Footer />
     </>
   )
 }
