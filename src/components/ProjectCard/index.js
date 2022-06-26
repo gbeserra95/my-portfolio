@@ -1,3 +1,5 @@
+import React from "react"
+
 import Image from "next/image"
 
 import GitHubIcon from '@mui/icons-material/GitHub'
@@ -10,6 +12,7 @@ const Wrapper = styled.div`
     width: 100%;
     display: flex;
     align-items: center;
+    margin-bottom: 160px;
 
     ${props => props.theme.breakpoints.down('md')} {
         flex-direction: column;
@@ -23,6 +26,7 @@ const ImageWrapper = styled.div`
     min-width: 720px;
     height: 472px;
     margin-left: 20px;
+    border: 1px solid ${props => props.theme.palette.primary.main};
 
     ${props => props.theme.breakpoints.down('lg')} {
         min-width: 512px;
@@ -111,6 +115,14 @@ const Bottom = styled.div`
         padding: 0;
         margin-bottom: 48px;
     }
+
+    a {
+        transition: 0.4s;
+
+        &:hover {
+            color: ${props => props.theme.palette.primary.main};
+        }
+    }
 `
 
 const LibrariesAndTools = styled.div`
@@ -127,47 +139,53 @@ const SocialIcons = styled.div`
 `
 
 
-export default function ProjectCard() {
+export default function ProjectCard({ title, category, description, stacks, github, link, preview}) {
     const lowerThanMd = useMediaQuery(theme => theme.breakpoints.down('md'))
 
     return(
         <Wrapper>
             {lowerThanMd && 
                 <Title>
-                    <Typography variant="p" fontSize="18px" color={theme => theme.palette.text.light}>Personal Project</Typography>
-                    <Typography variant="h2" color={theme => theme.palette.highlight.main}>myTasks</Typography>
+                    <Typography variant="p" fontSize="18px" color={theme => theme.palette.text.light}>{category}</Typography>
+                    <Typography variant="h2" color={theme => theme.palette.highlight.main}>{title}</Typography>
                 </Title>
             }
             <ImageWrapper>
                 <Image
-                    src="/assets/myTasks.png"
+                    src={preview}
                     layout="fill"
                     objectFit="fill"
-                    alt="myTasks app image"
+                    alt={title}
                 />
             </ImageWrapper>
             <Content>
                 {!lowerThanMd &&
                     <Title>
-                        <Typography variant="p" fontSize="18px" color={theme => theme.palette.text.light}>Personal Project</Typography>
-                        <Typography variant="h2" color={theme => theme.palette.highlight.main}>myTasks</Typography>
+                        <Typography variant="p" fontSize="18px" color={theme => theme.palette.text.light}>{category}</Typography>
+                        <Typography variant="h2" color={theme => theme.palette.highlight.main}>{title}</Typography>
                     </Title>
                 }
                 <Description>
                     <Typography variant="p" color={theme => theme.palette.text.light}>
-                        MyTasks is a web to-do list developed with the purpose of testing my React skills. In this project, you may edit and organize the order of your list by dragging and dropping items among them. All data is saved within the browser LocalStorage.
+                        {description}
                     </Typography>
                 </Description>
                 {!lowerThanMd &&
                     <Bottom>
                         <LibrariesAndTools>
-                            <Typography variant="p" fontSize="18px" margin="0" fontWeight="500" color="secondary">React</Typography>
-                            <Typography variant="p" fontSize="18px" margin="0" fontWeight="500" color="secondary">React Beautiful DnD</Typography>
-                            <Typography variant="p" fontSize="18px" margin="0" fontWeight="500" color="secondary">LocalStorage</Typography>
+                            {React.Children.toArray(
+                                stacks.map(stack => 
+                                    <Typography variant="p" fontSize="18px" margin="0" fontWeight="500" color="secondary">{stack}</Typography>
+                                )
+                            )}
                         </LibrariesAndTools>
                         <SocialIcons>
-                            <GitHubIcon />
-                            <LinkIcon />
+                            <a href={github} target="_blank" rel="noreferrer" aria-label={`${title} Github`}>
+                                <GitHubIcon />
+                            </a>
+                            <a href={link} target="_blank" rel="noreferrer" aria-label={`${title} Link`}>
+                                <LinkIcon />
+                            </a>
                         </SocialIcons>
                     </Bottom>
                 }
@@ -175,13 +193,19 @@ export default function ProjectCard() {
             {lowerThanMd &&
                 <Bottom>
                     <LibrariesAndTools>
-                        <Typography variant="p" fontSize="18px" margin="0" fontWeight="500" color="secondary">React</Typography>
-                        <Typography variant="p" fontSize="18px" margin="0" fontWeight="500" color="secondary">React Beautiful DnD</Typography>
-                        <Typography variant="p" fontSize="18px" margin="0" fontWeight="500" color="secondary">LocalStorage</Typography>
+                        {React.Children.toArray(
+                            stacks.map(stack => 
+                                <Typography variant="p" fontSize="18px" margin="0" fontWeight="500" color="secondary">{stack}</Typography>
+                            )
+                        )}
                     </LibrariesAndTools>
                     <SocialIcons>
-                        <GitHubIcon />
-                        <LinkIcon />
+                        <a href={github} target="_blank" rel="noreferrer" aria-label={`${title} Github`}>
+                            <GitHubIcon />
+                        </a>
+                        <a href={link} target="_blank" rel="noreferrer" aria-label={`${title} Link`}>
+                            <LinkIcon />
+                        </a>
                     </SocialIcons>
                 </Bottom>
             }

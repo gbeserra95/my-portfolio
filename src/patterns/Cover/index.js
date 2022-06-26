@@ -1,3 +1,6 @@
+import { useRouter } from "next/router"
+import { home } from "../../translations/home"
+
 import DashedArrow from "../../components/DashedArrow"
 
 import { Container, Typography } from "@mui/material"
@@ -26,15 +29,22 @@ const Content = styled.div`
 `
 
 export default function Cover() {
+    const { locale } = useRouter()
+
     return (
         <Wrapper id="home">
             <Container maxWidth="xl">
                 <SubContainer>
-                    <Content>
-                        <Typography variant="h4" color="primary">Gabriel Beserra</Typography>
-                        <Typography variant="h1" color={theme => theme.palette.text.light}>Frontend<br />Developer.</Typography>
-                        <DashedArrow><Typography variant="h4" color="primary">Explore</Typography></DashedArrow>
-                    </Content>
+                    {home
+                        .filter(item => item.locale === locale)
+                        .map(content => 
+                            <Content key={"cover-" + locale}>
+                                <Typography variant="h4" color="primary">Gabriel Beserra</Typography>
+                                {content.title}
+                                <DashedArrow><Typography variant="h4" color="primary">{content.explore}</Typography></DashedArrow>
+                            </Content>
+                        )
+                    }
                 </SubContainer>
             </Container>
         </Wrapper>

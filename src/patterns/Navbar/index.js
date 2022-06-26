@@ -1,8 +1,12 @@
+import { useRouter } from "next/router"
+import { navigation } from "../../translations/navigation"
+
 import { useContext } from "react"
 import { MenuContext } from "../../contexts/menu"
 
 import GitHubIcon from '@mui/icons-material/GitHub'
 import LinkedInIcon from '@mui/icons-material/LinkedIn'
+import LanguageSelector from "../../components/LanguageSelector"
 import MenuIcon from '@mui/icons-material/Menu'
 import CloseIcon from '@mui/icons-material/Close'
 
@@ -37,14 +41,15 @@ const SocialContainer = styled.ul`
     height: 24px;
     color: ${props => props.theme.palette.text.light};
     padding: 0;
+`
 
-    a {
-        font-size: 24px;
-        transition: 0.4s;
+const Anchor = styled.a`
+    font-size: 24px;
+    line-height: 24px;
+    transition: 0.4s;
 
-        &:hover {
-            color: ${props => props.theme.palette.primary.main};
-        }
+    &:hover {
+        color: ${props => props.theme.palette.primary.main};
     }
 `
 
@@ -136,6 +141,7 @@ const Overflow = styled.div`
 `
 
 export default function Navbar() {
+    const { locale } = useRouter()
     const { isOpen, setIsOpen } = useContext(MenuContext)
     const lowerThanMd = useMediaQuery(theme => theme.breakpoints.down('md'))
 
@@ -145,24 +151,27 @@ export default function Navbar() {
                 <Navigation>
                     <SocialContainer>
                         <li>
-                            <a 
+                            <Anchor 
                                 href="https://github.com/gbeserra95"
                                 target={"_blank"}
                                 rel={"noreferrer"}
                                 aria-label="Github profile"
                             >
                                 <GitHubIcon fontSize='inherit'/>
-                            </a>
+                            </Anchor>
                         </li>
                         <li>
-                            <a 
+                            <Anchor 
                                 href="https://www.linkedin.com/in/-gabrielbeserra/"
                                 target={"_blank"}
                                 rel={"noreferrer"}
                                 aria-label="LinkedIn profile"
                             >
                                 <LinkedInIcon fontSize='inherit'/>
-                            </a>
+                            </Anchor>
+                        </li>
+                        <li>
+                            <LanguageSelector />
                         </li>
                     </SocialContainer>
                     {lowerThanMd ? 
@@ -170,13 +179,17 @@ export default function Navbar() {
                             onClick={() => setIsOpen(true)}
                         />
                     :
-                        <ListContainer>
-                            <ListItem active>Home</ListItem>
-                            <ListItem>About</ListItem>
-                            <ListItem>Portfolio</ListItem>
-                            <ListItem>Contact</ListItem>
-                            <ListItem><StyledButton>Resume</StyledButton></ListItem>
-                        </ListContainer>
+                        navigation
+                            .filter(item => item.locale === locale)
+                            .map(content => 
+                                <ListContainer key={"navbar-1-" + locale}>
+                                    <ListItem active>{content.home}</ListItem>
+                                    <ListItem>{content.about}</ListItem>
+                                    <ListItem>{content.portfolio}</ListItem>
+                                    <ListItem>{content.contact}</ListItem>
+                                    <ListItem><StyledButton style={{width: '118px'}}>{content.resume}</StyledButton></ListItem>
+                                </ListContainer>    
+                            )
                     }
                 </Navigation>
             </Container>
@@ -186,6 +199,17 @@ export default function Navbar() {
                         onClick={() => setIsOpen(false)}
                     />
                 </div>
+                {navigation
+                    .filter(item => item.locale === locale)
+                    .map(content => 
+                        <ul key={"navbar-2-" + locale}>
+                            <li>{content.home}</li>
+                            <li>{content.about}</li>
+                            <li>{content.portfolio}</li>
+                            <li>{content.contact}</li>
+                            <li><StyledButton color="secondary" style={{width: '118px'}}>{content.resume}</StyledButton></li>
+                        </ul>
+                )}
                 <ul>
                     <li>Home</li>
                     <li>About</li>

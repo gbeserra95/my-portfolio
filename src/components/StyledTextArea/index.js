@@ -47,7 +47,7 @@ const TextArea = styled.textarea`
 
 export default function StyledTextArea({label, placeholder, id}) {
     return (
-        <Label for={id}>{label}
+        <Label>{label}
             <TextArea 
                 placeholder={placeholder}
                 id={id}

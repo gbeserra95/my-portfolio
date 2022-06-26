@@ -1,3 +1,7 @@
+import { useRouter } from "next/router"
+import { footer } from "../../translations/footer"
+import { navigation } from "../../translations/navigation"
+
 import GitHubIcon from '@mui/icons-material/GitHub'
 import LinkedInIcon from '@mui/icons-material/LinkedIn'
 import StyledButton from '../../components/StyledButton'
@@ -82,23 +86,30 @@ const SocialContainer = styled.ul`
     }
 `
 
-export default function About() {
+export default function Footer() {
+    const { locale } = useRouter()
+
     return (
         <Wrapper id="contact">
             <Container maxWidth="xl">
                 <Grid container>
                     <Grid item xs={10}>
-                        <Content>
-                            <Typography variant="h3" color="primary" margin={0}>Say hello!</Typography>
-                            <Typography variant="p" color={theme => theme.palette.text.light} margin={0}>
-                                <a href='mailto:gabriel.fernandesb@gmail.com'>gabriel.fernandesb@gmail.com</a>
-                            </Typography>
-                            <StyledButton
-                                style={{width: '112px'}}    
-                            >
-                                Resume
-                            </StyledButton>
-                        </Content>
+                        {footer
+                            .filter(item => item.locale === locale)
+                            .map(content => 
+                                <Content key={"footer-" + locale}>
+                                    <Typography variant="h3" color="primary" margin={0}>{content.title}</Typography>
+                                    <Typography variant="p" color={theme => theme.palette.text.light} margin={0}>
+                                        <a href='mailto:gabriel.fernandesb@gmail.com'>gabriel.fernandesb@gmail.com</a>
+                                    </Typography>
+                                    <StyledButton
+                                        style={{width: '112px'}}    
+                                    >
+                                        {content.resume}
+                                    </StyledButton>
+                                </Content>
+                            )
+                        }
                     </Grid>
                     <Grid item xs={2}>
                         <Sections>
@@ -127,9 +138,14 @@ export default function About() {
                     <Grid item xs={12}>
                         <Separator />
                         <Bottom>
-                            <Typography variant="p" color={theme => theme.palette.text.light} margin={0}>
-                                &copy; 2022 - Designed and built by Gabriel Beserra
-                            </Typography>
+                            {footer
+                                .filter(item => item.locale === locale)
+                                .map(content =>
+                                    <>
+                                        {content.copy}
+                                    </> 
+                                )
+                            }
                             <SocialContainer>
                                 <li>
                                     <a 

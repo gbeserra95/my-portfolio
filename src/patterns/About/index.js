@@ -1,3 +1,6 @@
+import { useRouter } from "next/router"
+import { about } from "../../translations/about"
+
 import Image from "next/image"
 
 import { Container, Grid, Typography, useMediaQuery } from "@mui/material"
@@ -40,26 +43,24 @@ const ImageWrapper = styled.div`
 `
 
 export default function About() {
+    const { locale } = useRouter()
+
     return (
         <Wrapper id="about">
             <Container maxWidth="xl">
                 <Grid container>
-                    <Grid item xs={12} sm={12} md={6} lg={6}>
-                        <Content>
-                            <Typography variant="h3" color="primary">About me</Typography>
-                            <Typography variant="p" color={theme => theme.palette.text.dark}>
-                                Hi, everyone! My name is <span>Gabriel Beserra</span> and I build websites.
-                            </Typography>
-                            <Typography variant="p" color={theme => theme.palette.text.dark}>
-                                I am a self-learning and passionate Frontend Developer with some experience building modern web applications with <span>React</span> and <span>Next.js</span>. I have a bachelor degree in Automation Engineering and worked over 2 years as Industrial Analyst when I decided to quit my job to start my own business as a freelance. 
-                            </Typography>
-                            <Typography variant="p" color={theme => theme.palette.text.dark}>
-                                I am always studying and trying to improve my programming skills to become an experienced Full Stack developer.
-                            </Typography>
-                            <Typography variant="p" color={theme => theme.palette.text.dark} marginBottom={{xs: "0", sm:"0", md: "0", lg:"16px"}}>
-                                In this website, you can see some of the projects I have been working so far.
-                            </Typography>
-                        </Content>
+                    <Grid item xs={12} sm={12} md={6} lg={6}>  
+                        {about
+                            .filter(item => item.locale === locale)
+                            .map(content => 
+                                <Content key={"about-" + locale}>
+                                    <Typography variant="h3" color="primary">
+                                        {content.title}
+                                    </Typography>
+                                    {content.description}
+                                </Content>
+                            )
+                        }
                     </Grid>
                     <Grid item container xs={12} sm={12} md={6} lg={6} justifyContent={{xs: "center", sm: "center", md: "center", lg: "flex-end"}} alignItems={"center"} paddingBottom={{xs: "6", sm:"6", md: "6", lg: "0"}}>
                         <ImageWrapper>
@@ -67,7 +68,10 @@ export default function About() {
                                 src="/assets/stacks.png"
                                 layout="fill"
                                 objectFit="contain"
-                                alt="Programing languages Gabriel Beserra works with: Next, React, Node, JavaScript and C sharp"
+                                alt={locale === "en" ? 
+                                        "Pictures containing highlighted words of the following stacks: Next, React, Node, JavaScript and C sharp" :
+                                        "Imagem com palavras em destaques das seguintes stacks: Next, React, Node, Javascript e C sharp."
+                                }
                             />
                         </ImageWrapper>
                     </Grid>

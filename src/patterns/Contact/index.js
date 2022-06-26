@@ -1,3 +1,6 @@
+import { useRouter } from "next/router"
+import { contact } from "../../translations/contact"
+
 import Form from "../../components/Form"
 
 import { Container, Typography } from "@mui/material"
@@ -19,21 +22,46 @@ const Wrapper = styled.section`
 
 const Content = styled.div`
     display: flex;
-    width: min(100%, 635px);
+    width: min(100%, 704px);
     flex-direction: column;
     align-items: center;
     margin: auto;
 `
 
 export default function About() {
+    const { locale } = useRouter()
+
     return (
         <Wrapper id="contact">
             <Container maxWidth="xl">
-                <Content>
-                    <Typography variant="h2" color="primary" marginBottom={"32px"}>Say hello!</Typography>
-                    <Typography variant="h3" color={theme => theme.palette.text.dark}>If you have a question, proposal or just want to know me better please reach me out.</Typography>
-                    <Form />
-                </Content>
+                {contact
+                    .filter(item => item.locale === locale)
+                    .map(content => 
+                        <Content key={"contact-" + locale}>
+                            <Typography variant="h2" color="primary" marginBottom={"32px"}>
+                                {content.title}
+                            </Typography>
+                            <Typography variant="h3" color={theme => theme.palette.text.dark} textAlign="center">
+                                {content.description}
+                            </Typography>
+                            <Form 
+                                name={{
+                                    nameLabel: content.nameLabel,
+                                    namePlaceholder: content.namePlaceholder
+                                }}
+                                email={{
+                                    emailLabel: content.emailLabel,
+                                    emailPlaceholder: content.emailPlaceholder
+                                }}
+                                message={{
+                                    messageLabel: content.messageLabel,
+                                    messagePlaceholder: content.messagePlaceholder
+                                }}
+                            />
+                        </Content>
+                    )
+                }
+
             </Container>
         </Wrapper>
     )
