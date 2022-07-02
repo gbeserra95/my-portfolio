@@ -69,7 +69,7 @@ export default function About() {
                     <Grid item container xs={12} sm={12} md={6} lg={6} justifyContent={{xs: "center", sm: "center", md: "center", lg: "flex-end"}} alignItems={"center"} paddingBottom={{xs: "6", sm:"6", md: "6", lg: "0"}}>
                         <ImageWrapper>
                             <Image
-                                src="/assets/stacks.png"
+                                src="/assets/images/stacks.png"
                                 layout="fill"
                                 objectFit="contain"
                                 alt={locale === "en" ? 
