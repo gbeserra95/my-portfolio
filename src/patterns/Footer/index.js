@@ -2,6 +2,9 @@ import { useRouter } from "next/router"
 import { footer } from "../../translations/footer"
 import { navigation } from "../../translations/navigation"
 
+import { useContext } from "react"
+import { SectionContext } from "../../contexts/section"
+
 import GitHubIcon from '@mui/icons-material/GitHub'
 import LinkedInIcon from '@mui/icons-material/LinkedIn'
 import StyledButton from '../../components/StyledButton'
@@ -88,9 +91,10 @@ const SocialContainer = styled.ul`
 
 export default function Footer() {
     const { locale } = useRouter()
+    const { footerRef } = useContext(SectionContext)
 
     return (
-        <Wrapper id="contact">
+        <Wrapper ref={footerRef}>
             <Container maxWidth="xl">
                 <Grid container>
                     <Grid item xs={10}>

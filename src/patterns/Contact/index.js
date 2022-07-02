@@ -19,7 +19,7 @@ const Wrapper = styled.section`
 
     ${props => props.theme.breakpoints.down('md')} {
         height: 100%;
-        padding: 64px 0;
+        padding: 160px 0 96px 0;
     }
 `
 

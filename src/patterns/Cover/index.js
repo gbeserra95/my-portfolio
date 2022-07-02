@@ -33,7 +33,11 @@ const Content = styled.div`
 
 export default function Cover() {
     const { locale } = useRouter()
-    const { homeRef } = useContext(SectionContext)
+    const { homeRef, aboutEntry } = useContext(SectionContext)
+
+    function handleScroll(entry) {
+        entry.target.scrollIntoView()
+    }
 
     return (
         <Wrapper ref={homeRef}>
@@ -45,7 +49,14 @@ export default function Cover() {
                             <Content key={"cover-" + locale}>
                                 <Typography variant="h4" color="primary">Gabriel Beserra</Typography>
                                 {content.title}
-                                <DashedArrow><a href="#about"><Typography variant="h4" color="primary">{content.explore}</Typography></a></DashedArrow>
+                                <DashedArrow onClick={() => handleScroll(aboutEntry)}>
+                                    <Typography 
+                                        variant="h4" 
+                                        color="primary"
+                                    >
+                                        {content.explore}
+                                    </Typography>
+                                </DashedArrow>
                             </Content>
                         )
                     }

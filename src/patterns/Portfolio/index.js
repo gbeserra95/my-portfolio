@@ -17,7 +17,7 @@ const Wrapper = styled.section`
     padding: 256px 0 96px 0;
 
     ${props => props.theme.breakpoints.down('md')} {
-        padding: 64px 0;
+        padding: 160px 0 48px 0;
     }
 `
 
@@ -31,7 +31,7 @@ export default function Portfolio() {
                 {portfolio
                     .filter(item => item.locale === locale)
                     .map(content => 
-                        <Typography variant="h3" color="primary" key={"portfolio-" + locale}>{content.title}</Typography>
+                        <Typography variant="h3" color="primary" key={"portfolio-" + locale} marginBottom="48px">{content.title}</Typography>
                     )
                 }
                 {projects.filter(project => project.locale === locale)

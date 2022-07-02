@@ -48,9 +48,9 @@ const Line = styled.div`
     };
 `
 
-export default function DashedArrow({ children }) {
+export default function DashedArrow({ onClick, children }) {
     return (
-        <Wrapper>
+        <Wrapper onClick={onClick}>
             {children}
             <LineWrapper>
                 <Line />

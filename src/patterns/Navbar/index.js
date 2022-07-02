@@ -1,7 +1,7 @@
 import { useRouter } from "next/router"
 import { navigation } from "../../translations/navigation"
 
-import { useContext } from "react"
+import { useState, useEffect, useContext } from "react"
 import { SectionContext } from "../../contexts/section"
 import { MenuContext } from "../../contexts/menu"
 
@@ -25,6 +25,8 @@ const Wrapper = styled.header`
     width: 100%;
     background-color: ${props => props.theme.palette.bg.dark};
     z-index: 1;
+    box-shadow: ${props => props.shadow ? `0px 0px 5px ${props.theme.palette.primary.main}` : 'none'};
+    transition: 0.4s;
 `
 
 const Navigation = styled.nav`
@@ -96,6 +98,7 @@ const CloseButton = styled(CloseIcon)`
 `
 
 const Overflow = styled.div`
+    box-sizing: border-box;
     position: fixed;
     height: 100vh;
     width: 100%;
@@ -103,7 +106,7 @@ const Overflow = styled.div`
     top: 0;
     right: ${props => props.show ? "0" : "-100%"};
     transition: 0.4s ease-in-out;
-    border-left: 1px solid ${props => props.theme.palette.primary.main};
+    box-shadow: ${props => `inset 0px 0px 5px ${props.theme.palette.primary.main}`};
 
     div {
         display: flex;
@@ -144,6 +147,8 @@ const SmallListItem = styled.li`
 export default function Navbar() {
     const { locale } = useRouter()
     const { isOpen, setIsOpen } = useContext(MenuContext)
+    const [shadowNavbar, setShadowNavbar] = useState(false)
+    
     const {
         homeRefInView,
         homeEntry,
@@ -152,7 +157,8 @@ export default function Navbar() {
         portfolioRefInView,
         portfolioEntry,
         contactRefInView,
-        contactEntry
+        contactEntry,
+        footerRefInView
     } = useContext(SectionContext)
 
     const lowerThanMd = useMediaQuery(theme => theme.breakpoints.down('md'))
@@ -165,8 +171,24 @@ export default function Navbar() {
         }
     }
 
+    useEffect(() => {
+        function stickyNavbar() {
+            if (window.scrollY > 0) {
+                setShadowNavbar(true)
+            } else {
+                setShadowNavbar(false)
+            }
+        }   
+
+        window.addEventListener('scroll', stickyNavbar)
+
+        return () => {
+            window.removeEventListener('scroll', stickyNavbar)    
+        }
+    }, [])
+
     return(
-        <Wrapper>
+        <Wrapper shadow={shadowNavbar ? 1 : 0}>
             <Container maxWidth="xl">
                 <Navigation>
                     <SocialContainer>
@@ -222,7 +244,7 @@ export default function Navbar() {
                                         {content.portfolio}
                                     </ListItem>
                                     <ListItem 
-                                        active={contactRefInView ? 1 : 0} 
+                                        active={contactRefInView || footerRefInView ? 1 : 0} 
                                         onClick={() => handleScrollIntoSection(contactEntry)}
                                     >
                                         {content.contact}
@@ -266,7 +288,7 @@ export default function Navbar() {
                                 {content.portfolio}
                             </SmallListItem>
                             <SmallListItem 
-                                active={contactRefInView ? 1 : 0} 
+                                active={contactRefInView || footerRefInView ? 1 : 0} 
                                 onClick={() => handleScrollIntoSection(contactEntry)}
                             >
                                 {content.contact}

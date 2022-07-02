@@ -8,6 +8,7 @@ export function SectionProvider({ children }) {
     const [aboutRef, aboutRefInView, aboutEntry] = useInView({threshold: 0.5, trackVisibility: true, delay: 500})
     const [portfolioRef, portfolioRefInView, portfolioEntry] = useInView({threshold: 0.15, trackVisibility: true, delay: 500})
     const [contactRef, contactRefInView, contactEntry] = useInView({threshold: 0.45, trackVisibility: true, delay: 500})
+    const [footerRef, footerRefInView, footerEntry] = useInView({threshold: 0, trackVisibility: true, delay: 500})
 
     return(
         <SectionContext.Provider
@@ -23,7 +24,10 @@ export function SectionProvider({ children }) {
                 portfolioEntry,
                 contactRef,
                 contactRefInView,
-                contactEntry
+                contactEntry,
+                footerRef,
+                footerRefInView,
+                footerEntry
             }}
         >
             {children}

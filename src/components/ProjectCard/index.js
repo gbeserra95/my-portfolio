@@ -18,6 +18,7 @@ const Wrapper = styled.div`
         flex-direction: column;
         gap: 32px;
         align-items: flex-start;
+        margin-bottom: 0;
     }
 `
 
@@ -39,8 +40,12 @@ const ImageWrapper = styled.div`
     }
 
     ${props => props.theme.breakpoints.down('md')} {
+        margin: 0 auto;
+    }
+
+    ${props => props.theme.breakpoints.down('500')} {
         min-width: 100%;
-        min-height: calc(0.66 * (100vw));
+        height: 224px;
         margin: 0 auto;
     }
     
@@ -141,20 +146,21 @@ const SocialIcons = styled.div`
 
 export default function ProjectCard({ title, category, description, stacks, github, link, preview}) {
     const lowerThanMd = useMediaQuery(theme => theme.breakpoints.down('md'))
+    const lowerThan500 = useMediaQuery(theme => theme.breakpoints.down('500'))
 
     return(
         <Wrapper>
             {lowerThanMd && 
                 <Title>
                     <Typography variant="p" fontSize="18px" color={theme => theme.palette.text.light}>{category}</Typography>
-                    <Typography variant="h2" color={theme => theme.palette.highlight.main}>{title}</Typography>
+                    <Typography variant="h3" color={theme => theme.palette.highlight.main} marginBottom={0}>{title}</Typography>
                 </Title>
             }
             <ImageWrapper>
                 <Image
                     src={preview}
                     layout="fill"
-                    objectFit="fill"
+                    objectFit={lowerThan500 ? "fill" : "contain"}
                     alt={title}
                 />
             </ImageWrapper>

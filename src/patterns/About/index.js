@@ -14,7 +14,7 @@ const Wrapper = styled.section`
     background-color: ${props => props.theme.palette.bg.light};
 
     ${props => props.theme.breakpoints.down('md')} {
-        padding: 64px 0 0 0;
+        padding: 160px 0 0 0;
     }
 `
 
