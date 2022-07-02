@@ -2,6 +2,7 @@ import { useRouter } from "next/router"
 import { navigation } from "../../translations/navigation"
 
 import { useContext } from "react"
+import { SectionContext } from "../../contexts/section"
 import { MenuContext } from "../../contexts/menu"
 
 import GitHubIcon from '@mui/icons-material/GitHub'
@@ -66,7 +67,7 @@ const ListItem = styled.li`
     border-bottom: ${props => props.active ? `3px solid ${props.theme.palette.primary.main}` : 'none'};
     padding-bottom: 10px;
     color: ${props => props.theme.palette.text.light};
-    transition: 0.4s;
+    transition: color 0.4s;
     cursor: pointer;
 
     &:hover {
@@ -102,6 +103,7 @@ const Overflow = styled.div`
     top: 0;
     right: ${props => props.show ? "0" : "-100%"};
     transition: 0.4s ease-in-out;
+    border-left: 1px solid ${props => props.theme.palette.primary.main};
 
     div {
         display: flex;
@@ -124,26 +126,44 @@ const Overflow = styled.div`
         font-size: 20px;
         gap: 32px;
         height: 100%;
-        color: ${props => props.theme.palette.text.light};
         padding: 0;
     }
+`
 
-    li {
-        padding-bottom: 10px;
-        border-bottom: ${props => props.active ? `3px solid ${props.theme.palette.primary.main}` : 'none'};
-        transition: 0.4s;
-        cursor: pointer;
+const SmallListItem = styled.li`
+    padding-bottom: 10px;
+    transition: 0.4s;
+    cursor: pointer;
+    color : ${props => props.active ? props.theme.palette.primary.main : props.theme.palette.text.light};
 
-        &:hover {
-            color: ${props => props.theme.palette.primary.main};
-        }
+    &:hover {
+        color: ${props => props.theme.palette.primary.main};
     }
 `
 
 export default function Navbar() {
     const { locale } = useRouter()
     const { isOpen, setIsOpen } = useContext(MenuContext)
+    const {
+        homeRefInView,
+        homeEntry,
+        aboutRefInView,
+        aboutEntry,
+        portfolioRefInView,
+        portfolioEntry,
+        contactRefInView,
+        contactEntry
+    } = useContext(SectionContext)
+
     const lowerThanMd = useMediaQuery(theme => theme.breakpoints.down('md'))
+
+    function handleScrollIntoSection(entry) {
+        entry.target.scrollIntoView()
+
+        if(lowerThanMd) {
+            setIsOpen(false)
+        }
+    }
 
     return(
         <Wrapper>
@@ -183,11 +203,35 @@ export default function Navbar() {
                             .filter(item => item.locale === locale)
                             .map(content => 
                                 <ListContainer key={"navbar-1-" + locale}>
-                                    <ListItem active>{content.home}</ListItem>
-                                    <ListItem>{content.about}</ListItem>
-                                    <ListItem>{content.portfolio}</ListItem>
-                                    <ListItem>{content.contact}</ListItem>
-                                    <ListItem><StyledButton style={{width: '118px'}}>{content.resume}</StyledButton></ListItem>
+                                    <ListItem 
+                                        active={homeRefInView ? 1 : 0} 
+                                        onClick={() => handleScrollIntoSection(homeEntry)}
+                                    >
+                                        {content.home}
+                                    </ListItem>
+                                    <ListItem 
+                                        active={aboutRefInView ? 1 : 0} 
+                                        onClick={() => handleScrollIntoSection(aboutEntry)}
+                                    >
+                                        {content.about}
+                                    </ListItem>
+                                    <ListItem 
+                                        active={portfolioRefInView ? 1 : 0} 
+                                        onClick={() => handleScrollIntoSection(portfolioEntry)}
+                                    >
+                                        {content.portfolio}
+                                    </ListItem>
+                                    <ListItem 
+                                        active={contactRefInView ? 1 : 0} 
+                                        onClick={() => handleScrollIntoSection(contactEntry)}
+                                    >
+                                        {content.contact}
+                                    </ListItem>
+                                    <ListItem>
+                                        <StyledButton style={{width: '118px'}}>
+                                            {content.resume}
+                                        </StyledButton>
+                                    </ListItem>
                                 </ListContainer>    
                             )
                     }
@@ -203,21 +247,37 @@ export default function Navbar() {
                     .filter(item => item.locale === locale)
                     .map(content => 
                         <ul key={"navbar-2-" + locale}>
-                            <li>{content.home}</li>
-                            <li>{content.about}</li>
-                            <li>{content.portfolio}</li>
-                            <li>{content.contact}</li>
-                            <li><StyledButton color="secondary" style={{width: '118px'}}>{content.resume}</StyledButton></li>
+                            <SmallListItem 
+                                active={homeRefInView ? 1 : 0} 
+                                onClick={() => handleScrollIntoSection(homeEntry)}
+                            >
+                                {content.home}
+                            </SmallListItem>
+                            <SmallListItem 
+                                active={aboutRefInView ? 1 : 0} 
+                                onClick={() => handleScrollIntoSection(aboutEntry)}
+                            >
+                                {content.about}
+                            </SmallListItem>
+                            <SmallListItem 
+                                active={portfolioRefInView ? 1 : 0} 
+                                onClick={() => handleScrollIntoSection(portfolioEntry)}
+                            >
+                                {content.portfolio}
+                            </SmallListItem>
+                            <SmallListItem 
+                                active={contactRefInView ? 1 : 0} 
+                                onClick={() => handleScrollIntoSection(contactEntry)}
+                            >
+                                {content.contact}
+                            </SmallListItem>
+                            <SmallListItem onClick={() => setIsOpen(false)}>
+                                <StyledButton color="secondary" style={{width: '118px'}}>
+                                    {content.resume}
+                                </StyledButton>
+                            </SmallListItem>
                         </ul>
                 )}
-                <ul>
-                    <li>Home</li>
-                    <li>About</li>
-                    <li>Portfolio</li>
-                    <li>Contact</li>
-                    <li><StyledButton color="secondary">Resume</StyledButton></li>
-                </ul>
-
             </Overflow>
         </Wrapper>
     )

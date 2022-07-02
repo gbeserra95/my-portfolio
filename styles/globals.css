@@ -6,6 +6,7 @@ body {
   margin: 0;
   font-family: 'Kanit', sans-serif, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue;
+  scroll-behavior: smooth;
 }
 
 a {
@@ -15,4 +16,19 @@ a {
 
 * {
   box-sizing: border-box;
+}
+
+/* width */
+::-webkit-scrollbar {
+  width: 0.5rem;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #555555;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: rgb(32, 129, 195);
 }

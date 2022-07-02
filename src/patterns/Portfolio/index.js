@@ -1,5 +1,9 @@
 import { useRouter } from "next/router"
 import { portfolio } from "../../translations/portfolio"
+
+import { useContext } from "react"
+import { SectionContext } from "../../contexts/section"
+
 import { projects } from "../../data"
 
 import ProjectCard from "../../components/ProjectCard"
@@ -19,9 +23,10 @@ const Wrapper = styled.section`
 
 export default function Portfolio() {
     const { locale } = useRouter()
+    const { portfolioRef } = useContext(SectionContext)
 
     return (
-        <Wrapper id="portfolio">
+        <Wrapper ref={portfolioRef}>
             <Container maxWidth="xl">
                 {portfolio
                     .filter(item => item.locale === locale)

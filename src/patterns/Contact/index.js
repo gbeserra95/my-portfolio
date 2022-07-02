@@ -1,6 +1,9 @@
 import { useRouter } from "next/router"
 import { contact } from "../../translations/contact"
 
+import { useContext } from "react"
+import { SectionContext } from "../../contexts/section"
+
 import Form from "../../components/Form"
 
 import { Container, Typography } from "@mui/material"
@@ -30,9 +33,10 @@ const Content = styled.div`
 
 export default function About() {
     const { locale } = useRouter()
+    const { contactRef } = useContext(SectionContext)
 
     return (
-        <Wrapper id="contact">
+        <Wrapper ref={contactRef}>
             <Container maxWidth="xl">
                 {contact
                     .filter(item => item.locale === locale)

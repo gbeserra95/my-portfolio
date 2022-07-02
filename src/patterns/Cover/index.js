@@ -1,6 +1,9 @@
 import { useRouter } from "next/router"
 import { home } from "../../translations/home"
 
+import { useContext } from "react"
+import { SectionContext } from "../../contexts/section"
+
 import DashedArrow from "../../components/DashedArrow"
 
 import { Container, Typography } from "@mui/material"
@@ -30,9 +33,10 @@ const Content = styled.div`
 
 export default function Cover() {
     const { locale } = useRouter()
+    const { homeRef } = useContext(SectionContext)
 
     return (
-        <Wrapper id="home">
+        <Wrapper ref={homeRef}>
             <Container maxWidth="xl">
                 <SubContainer>
                     {home
@@ -41,7 +45,7 @@ export default function Cover() {
                             <Content key={"cover-" + locale}>
                                 <Typography variant="h4" color="primary">Gabriel Beserra</Typography>
                                 {content.title}
-                                <DashedArrow><Typography variant="h4" color="primary">{content.explore}</Typography></DashedArrow>
+                                <DashedArrow><a href="#about"><Typography variant="h4" color="primary">{content.explore}</Typography></a></DashedArrow>
                             </Content>
                         )
                     }

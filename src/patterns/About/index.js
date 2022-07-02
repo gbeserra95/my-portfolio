@@ -1,6 +1,9 @@
 import { useRouter } from "next/router"
 import { about } from "../../translations/about"
 
+import { useContext } from "react"
+import { SectionContext } from "../../contexts/section"
+
 import Image from "next/image"
 
 import { Container, Grid, Typography, useMediaQuery } from "@mui/material"
@@ -44,9 +47,10 @@ const ImageWrapper = styled.div`
 
 export default function About() {
     const { locale } = useRouter()
+    const { aboutRef } = useContext(SectionContext)
 
     return (
-        <Wrapper id="about">
+        <Wrapper ref={aboutRef}>
             <Container maxWidth="xl">
                 <Grid container>
                     <Grid item xs={12} sm={12} md={6} lg={6}>  
