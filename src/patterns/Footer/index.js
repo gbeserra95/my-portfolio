@@ -1,8 +1,8 @@
+import React, { useContext } from "react"
 import { useRouter } from "next/router"
 import { footer } from "../../translations/footer"
 import { navigation } from "../../translations/navigation"
 
-import { useContext } from "react"
 import { SectionContext } from "../../contexts/section"
 
 import GitHubIcon from '@mui/icons-material/GitHub'
@@ -55,6 +55,16 @@ const Sections = styled.ul`
     ${props => props.theme.breakpoints.down('sm')} {
         display: none;
     }
+
+    li {
+        color: ${props => props.theme.palette.text.light};
+        transition: 0.4s;
+        cursor: pointer;
+
+        &:hover {
+            color: ${props => props.theme.palette.primary.main};
+        }
+    }
 `
 
 const Separator = styled.div`
@@ -73,7 +83,7 @@ const Bottom = styled.div`
 
 const SocialContainer = styled.ul`
     display: flex;
-    gap: 32px;
+    gap: 24px;
     list-style: none;
     height: 24px;
     color: ${props => props.theme.palette.text.light};
@@ -91,65 +101,102 @@ const SocialContainer = styled.ul`
 
 export default function Footer() {
     const { locale } = useRouter()
-    const { footerRef } = useContext(SectionContext)
+    const { 
+            footerRef,
+            homeEntry,
+            aboutEntry,
+            portfolioEntry,
+            contactEntry
+    } = useContext(SectionContext)
+
+    function handleScrollIntoSection(entry) {
+        entry.target.scrollIntoView()
+    }
 
     return (
         <Wrapper ref={footerRef}>
             <Container maxWidth="xl">
                 <Grid container>
                     <Grid item xs={10}>
-                        {footer
-                            .filter(item => item.locale === locale)
-                            .map(content => 
-                                <Content key={"footer-" + locale}>
-                                    <Typography variant="h3" color="primary" margin={0}>{content.title}</Typography>
-                                    <Typography variant="p" color={theme => theme.palette.text.light} margin={0}>
-                                        <a href='mailto:gabriel.fernandesb@gmail.com'>gabriel.fernandesb@gmail.com</a>
-                                    </Typography>
-                                    <StyledButton
-                                        style={{width: '112px'}}    
-                                    >
-                                        {content.resume}
-                                    </StyledButton>
-                                </Content>
-                            )
-                        }
+                        {React.Children.toArray(
+                            footer
+                                .filter(item => item.locale === locale)
+                                .map(content => 
+                                    <Content key={"footer-" + locale}>
+                                        <Typography variant="h3" color="primary" margin={0}>{content.title}</Typography>
+                                        <Typography variant="p" color={theme => theme.palette.text.light} margin={0}>
+                                            <a href='mailto:gabriel.fernandesb@gmail.com'>gabriel.fernandesb@gmail.com</a>
+                                        </Typography>
+                                        <StyledButton
+                                            style={{width: '112px'}}    
+                                            href={locale === "pt-BR" ? "assets/resumes/cvGabrielBeserraPT.pdf" : "assets/resumes/cvGabrielBeserraEN.pdf"}
+                                            target="_blank"
+                                            rel="noreferrer"
+                                        >
+                                            {content.resume}
+                                        </StyledButton>
+                                    </Content>
+                        ))}
                     </Grid>
                     <Grid item xs={2}>
-                        <Sections>
-                            <li>
-                                <Typography variant="p" color={theme => theme.palette.text.light} margin={0}>
-                                    <a href='#home'>Home</a>
-                                </Typography>
-                            </li>
-                            <li>
-                                <Typography variant="p" color={theme => theme.palette.text.light} margin={0}>
-                                    <a href='#about'>About</a>
-                                </Typography>
-                            </li>
-                            <li>
-                                <Typography variant="p" color={theme => theme.palette.text.light} margin={0}>
-                                    <a href='#portfolio'>Portfolio</a>
-                                </Typography>
-                            </li>
-                            <li>
-                                <Typography variant="p" color={theme => theme.palette.text.light} margin={0}>
-                                    <a href='#contact'>Contact</a>
-                                </Typography>
-                            </li>
-                        </Sections>
+                        {navigation
+                            .filter(item => item.locale === locale)
+                            .map(content =>
+                                <Sections key={"bottom-nav-1- + locale"}>
+                                    <li>
+                                        <Typography 
+                                            variant="p" 
+                                            color="inherit" 
+                                            margin={0}
+                                            onClick={() => handleScrollIntoSection(homeEntry)}
+                                        >
+                                            {content.home}
+                                        </Typography>
+                                    </li>
+                                    <li>
+                                        <Typography 
+                                            variant="p" 
+                                            color="inherit" 
+                                            margin={0}
+                                            onClick={() => handleScrollIntoSection(aboutEntry)}
+                                        >
+                                            {content.about}
+                                        </Typography>
+                                    </li>
+                                    <li>
+                                        <Typography 
+                                            variant="p" 
+                                            color="inherit" 
+                                            margin={0}
+                                            onClick={() => handleScrollIntoSection(portfolioEntry)}    
+                                        >
+                                            {content.portfolio}
+                                        </Typography>
+                                    </li>
+                                    <li>
+                                        <Typography 
+                                            variant="p"
+                                            color="inherit"
+                                            margin={0}
+                                            onClick={() => handleScrollIntoSection(contactEntry)}    
+                                        >
+                                            {content.contact}
+                                        </Typography>
+                                    </li>
+                                </Sections>
+                        )}
                     </Grid>
                     <Grid item xs={12}>
                         <Separator />
                         <Bottom>
-                            {footer
+                            {React.Children.toArray(footer
                                 .filter(item => item.locale === locale)
                                 .map(content =>
                                     <>
                                         {content.copy}
                                     </> 
                                 )
-                            }
+                            )}
                             <SocialContainer>
                                 <li>
                                     <a 

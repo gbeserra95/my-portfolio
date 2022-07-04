@@ -1,3 +1,4 @@
+import React from "react"
 import { useRouter } from "next/router"
 import { portfolio } from "../../translations/portfolio"
 
@@ -34,19 +35,19 @@ export default function Portfolio() {
                         <Typography variant="h3" color="primary" key={"portfolio-" + locale} marginBottom="48px">{content.title}</Typography>
                     )
                 }
-                {projects.filter(project => project.locale === locale)
-                    .map(content =>
-                        <ProjectCard 
-                            title={content.title}
-                            category={content.category}
-                            description={content.description}
-                            stacks={content.stacks}
-                            github={content.github}
-                            link={content.link}
-                            preview={content.preview}
-                        />
-                    )
-                }
+                {React.Children.toArray(
+                    projects.filter(project => project.locale === locale)
+                        .map(content =>
+                            <ProjectCard 
+                                title={content.title}
+                                category={content.category}
+                                description={content.description}
+                                stacks={content.stacks}
+                                github={content.github}
+                                link={content.link}
+                                preview={content.preview}
+                            />
+                ))}
             </Container>
         </Wrapper>
     )

@@ -1,5 +1,4 @@
 import React from "react"
-
 import Image from "next/image"
 
 import GitHubIcon from '@mui/icons-material/GitHub'
@@ -179,10 +178,17 @@ export default function ProjectCard({ title, category, description, stacks, gith
                 {!lowerThanMd &&
                     <Bottom>
                         <LibrariesAndTools>
-                            {React.Children.toArray(
-                                stacks.map(stack => 
-                                    <Typography variant="p" fontSize="18px" margin="0" fontWeight="500" color="secondary">{stack}</Typography>
-                                )
+                            {stacks.map((stack, index) => 
+                                <Typography 
+                                    key={title + "-" + stack + "-" + index}
+                                    variant="p" 
+                                    fontSize="18px"
+                                    margin="0"
+                                    fontWeight="500"
+                                    color="secondary"
+                                >
+                                    {stack}
+                                </Typography>
                             )}
                         </LibrariesAndTools>
                         <SocialIcons>
@@ -199,10 +205,17 @@ export default function ProjectCard({ title, category, description, stacks, gith
             {lowerThanMd &&
                 <Bottom>
                     <LibrariesAndTools>
-                        {React.Children.toArray(
-                            stacks.map(stack => 
-                                <Typography variant="p" fontSize="18px" margin="0" fontWeight="500" color="secondary">{stack}</Typography>
-                            )
+                        {stacks.map((stack, index) => 
+                                <Typography 
+                                key={title + "-LTMD-" + stack + "-" + index}
+                                variant="p"
+                                fontSize="18px" 
+                                margin="0" 
+                                fontWeight="500" 
+                                color="secondary"
+                            >
+                                {stack}
+                            </Typography>
                         )}
                     </LibrariesAndTools>
                     <SocialIcons>

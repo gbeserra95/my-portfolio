@@ -1,7 +1,6 @@
 import React from "react"
 
 import { useRouter } from "next/router"
-import { useState } from "react"
 
 import Link from "next/link"
 
@@ -34,9 +33,8 @@ export default function LanguageSelector() {
 
     return (
         <Wrapper>
-            {React.Children.toArray(
-                router.locales.map((locale) => 
-                <Item active={router.locale.slice(0, 2) === locale.slice(0, 2) ? 1 : 0}>
+            {router.locales.map((locale) => 
+                <Item key={"language-selector-' + locale"} active={router.locale.slice(0, 2) === locale.slice(0, 2) ? 1 : 0}>
                     <Link
                         href={router.pathname}
                         locale={locale}
@@ -47,7 +45,7 @@ export default function LanguageSelector() {
                         </a>
                     </Link>
                 </Item>
-            ))}
+            )}
         </Wrapper>
     )
 }

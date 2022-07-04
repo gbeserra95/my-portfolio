@@ -250,7 +250,12 @@ export default function Navbar() {
                                         {content.contact}
                                     </ListItem>
                                     <ListItem>
-                                        <StyledButton style={{width: '118px'}}>
+                                        <StyledButton 
+                                            style={{width: '118px'}}
+                                            href={locale === "pt-BR" ? "assets/resumes/cvGabrielBeserraPT.pdf" : "assets/resumes/cvGabrielBeserraEN.pdf"}
+                                            target="_blank"
+                                            rel="noreferrer"
+                                        >
                                             {content.resume}
                                         </StyledButton>
                                     </ListItem>
@@ -294,7 +299,13 @@ export default function Navbar() {
                                 {content.contact}
                             </SmallListItem>
                             <SmallListItem onClick={() => setIsOpen(false)}>
-                                <StyledButton color="secondary" style={{width: '118px'}}>
+                                <StyledButton 
+                                    color="secondary" 
+                                    style={{width: '118px'}}
+                                    href={locale === "pt-BR" ? "assets/resumes/cvGabrielBeserraPT.pdf" : "assets/resumes/cvGabrielBeserraEN.pdf"}
+                                    target="_blank"
+                                    rel="noreferrer"
+                                >
                                     {content.resume}
                                 </StyledButton>
                             </SmallListItem>

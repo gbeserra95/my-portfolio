@@ -29,7 +29,7 @@ const Input = styled.input`
     }
 `
 
-export default function StyledInput({label, placeholder, type, id}) {
+export default function StyledInput({label, name, placeholder, type, id}) {
     return (
         <Label>
             {label}
@@ -37,6 +37,7 @@ export default function StyledInput({label, placeholder, type, id}) {
                 type={type}
                 placeholder={placeholder}
                 id={id}
+                name={name}
                 required
             />
         </Label>

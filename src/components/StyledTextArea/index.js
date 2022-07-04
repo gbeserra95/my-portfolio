@@ -45,13 +45,13 @@ const TextArea = styled.textarea`
     }
 `
 
-export default function StyledTextArea({label, placeholder, id}) {
+export default function StyledTextArea({label, name, placeholder, id}) {
     return (
         <Label>{label}
             <TextArea 
                 placeholder={placeholder}
                 id={id}
-                name={id}
+                name={name}
                 rows="6"
                 required
             />
