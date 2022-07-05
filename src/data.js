@@ -6,7 +6,7 @@ export const projects = [
         description: "Portfólio pessoal, desenvolvido em Next.js, aonde mostro os meus projetos mais relevantes, habilidades, currículo e contato para trabalhos.",
         stacks: ["Next.js", "Material UI", "EmailJS"],
         github: "https://github.com/gbeserra95/my-portfolio",
-        link: "",
+        link: "https://gabrielbeserra.com",
         preview: "/assets/images/projects/portfolio.png"
     },
     {
@@ -16,7 +16,7 @@ export const projects = [
         description: "Personal portfolio, developed in Next.js, where I show the most relevant projects of mine, skills, resume and contact for jobs.",
         stacks: ["Next.js", "Material UI", "EmailJS"],
         github: "https://github.com/gbeserra95/my-portfolio",
-        link: "",
+        link: "https://gabrielbeserra.com",
         preview: "/assets/images/projects/portfolio.png"
     },
     {

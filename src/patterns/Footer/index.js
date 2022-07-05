@@ -20,18 +20,18 @@ const Wrapper = styled.footer`
     justify-content: center;
     align-items: center;
 
-    a {
-        transition: 0.4s;
-        text-decoration: none;
-
-        &:hover {
-            color: ${props => props.theme.palette.primary.main};
-        }
-    }
-
     ${props => props.theme.breakpoints.down('md')} {
         height: 100%;
         padding: 64px 0;
+    }
+`
+
+const StyledAnchor = styled.a`
+    transition: 0.4s;
+    text-decoration: none;
+
+    &:hover {
+        color: ${props => props.theme.palette.primary.main};
     }
 `
 
@@ -125,7 +125,7 @@ export default function Footer() {
                                     <Content key={"footer-" + locale}>
                                         <Typography variant="h3" color="primary" margin={0}>{content.title}</Typography>
                                         <Typography variant="p" color={theme => theme.palette.text.light} margin={0}>
-                                            <a href='mailto:gabriel.fernandesb@gmail.com'>gabriel.fernandesb@gmail.com</a>
+                                            <StyledAnchor href='mailto:gabriel.fernandesb@gmail.com'>gabriel.fernandesb@gmail.com</StyledAnchor>
                                         </Typography>
                                         <StyledButton
                                             style={{width: '112px'}}    
@@ -199,24 +199,24 @@ export default function Footer() {
                             )}
                             <SocialContainer>
                                 <li>
-                                    <a 
+                                    <StyledAnchor 
                                         href="https://github.com/gbeserra95"
                                         target={"_blank"}
                                         rel={"noreferrer"}
                                         aria-label="Github profile"
                                     >
                                         <GitHubIcon fontSize='inherit'/>
-                                    </a>
+                                    </StyledAnchor>
                                 </li>
                                 <li>
-                                    <a 
+                                    <StyledAnchor 
                                         href="https://www.linkedin.com/in/-gabrielbeserra/"
                                         target={"_blank"}
                                         rel={"noreferrer"}
                                         aria-label="LinkedIn profile"
                                     >
                                         <LinkedInIcon fontSize='inherit'/>
-                                    </a>
+                                    </StyledAnchor>
                                 </li>
                             </SocialContainer>
                         </Bottom>
