@@ -1,34 +1,36 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+<div align="center">
+    <img src="/public/assets/image/preview.png" alt="Gabriel Beserra | Frontend Developer" />
+    <p>Hi, everyone! My name is Gabriel Beserra, I am a Frontend Developer and I build modern websites using mostly Next.js and React.</p>
+</div>
 
-## Getting Started
+<div align="center">
+    <a href="https://gabrielbeserra.com/">gabrielbeserra.com</a>
+</div>
 
-First, run the development server:
+## About
 
-```bash
-npm run dev
-# or
-yarn dev
-```
+Welcome to my personal portfolio, developed in Next.js, where I show my most relevant projects, skills, resume and contact for jobs.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Built with
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
+- [Next.js](https://nextjs.org/)
+- [Material UI](https://github.com/atlassian/react-beautiful-dnd)
+- [EmailJS](https://www.emailjs.com/)
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
+## License
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+Distributed under the MIT License.<br>
 
-## Learn More
+See `LICENSE.txt` for more information.
 
-To learn more about Next.js, take a look at the following resources:
+## Author
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Created by [Gabriel Beserra](https://github.com/gbeserra95).
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+Find me on [LinkedIn](https://www.linkedin.com/in/-gabrielbeserra/)!
 
-## Deploy on Vercel
+Cheers! 🍻
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+<div align="right">
+    <a href="#">back to top</a>
+</div>
