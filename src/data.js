@@ -71,7 +71,7 @@ export const projects = [
     },
     {
         locale: "en",
-        title: "My Weather App",
+        title: "myTasks",
         category: "Personal Project",
         description: "MyTasks is a web to-do list developed with the purpose of testing my React skills. In this project, you may edit and organize the order of your list by dragging and dropping items among them. All information is saved within the browser LocalStorage.",
         stacks: ["React", "React Beautiful DnD", "LocalStorage"],
