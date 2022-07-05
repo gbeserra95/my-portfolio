@@ -13,7 +13,7 @@ export const projects = [
         locale: "en",
         title: "My Portfolio",
         category: "Personal Project",
-        description: "Personal portfolio, developed in Next.js, where I show the most relevant projects of mine, skills, resume and contact for jobs.",
+        description: "Personal portfolio, developed in Next.js, where I show the my most relevant projects, skills, resume and contact for jobs.",
         stacks: ["Next.js", "Material UI", "EmailJS"],
         github: "https://github.com/gbeserra95/my-portfolio",
         link: "https://gabrielbeserra.com",
