@@ -1,5 +1,6 @@
 <div align="center">
     <img src="/public/assets/images/preview.png" alt="Gabriel Beserra | Frontend Developer" width="320px" height="192px"/>
+    <br />
     <p>Hi, everyone! My name is Gabriel Beserra, I am a Frontend Developer and I build modern websites using mostly Next.js and React.</p>
 </div>
 
@@ -14,7 +15,7 @@ Welcome to my personal portfolio, developed in Next.js, where I show my most rel
 ## Built with
 
 - [Next.js](https://nextjs.org/)
-- [Material UI](https://github.com/atlassian/react-beautiful-dnd)
+- [Material UI](https://mui.com/pt/)
 - [EmailJS](https://www.emailjs.com/)
 
 ## License
