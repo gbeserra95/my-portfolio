@@ -1,11 +1,8 @@
 <div align="center">
-    <img src="/public/assets/images/preview.png" alt="Gabriel Beserra | Frontend Developer" width="320px" height="192px"/>
+    <p>Gabriel Beserra</p>
+    <h1>Frontend Developer</h1>
     <br />
-    <p>Hi, everyone! My name is Gabriel Beserra, I am a Frontend Developer and I build modern websites using mostly Next.js and React.</p>
-</div>
-
-<div align="center">
-    <a href="https://gabrielbeserra.com/">gabrielbeserra.com</a>
+    <p>Hi, everyone! My name is Gabriel Beserra, I am a Frontend Developer and I build modern websites using mostly Next.js and React. Access <a href="https://gabrielbeserra.com/">gabrielbeserra.com</a> and check out my work!</p>
 </div>
 
 ## About
