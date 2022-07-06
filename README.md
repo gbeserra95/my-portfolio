@@ -1,6 +1,5 @@
 <div align="center">
-    <p>Gabriel Beserra</p>
-    <h1>Frontend Developer</h1>
+    <h1>My Portfolio</h1>
     <br />
     <p>Hi, everyone! My name is Gabriel Beserra, I am a Frontend Developer and I build modern websites using mostly Next.js and React. Access <a href="https://gabrielbeserra.com/">gabrielbeserra.com</a> and check out my work!</p>
 </div>
