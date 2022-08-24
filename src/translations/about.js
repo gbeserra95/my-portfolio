@@ -17,13 +17,13 @@ export const about = [
 					variant='p'
 					color={(theme) => theme.palette.text.dark}
 				>
-					Sou um Desenvolvedor Frontend autodidata e apaixonado por
+					Sou um Desenvolvedor autodidata e apaixonado por
 					programação. Tenho um pouco mais 1 ano de experiência na
-					construção de aplicações web modernas com <span>React</span>{' '}
-					e <span>Next.js</span>. Sou formado em Engenharia de
-					Controle e Automação e trabalhei por mais de 2 anos como
-					Analista Industrial quando decidi seguir minha carreira como
-					Dev.
+					construção de aplicações web modernas com <span>React</span>
+					, <span>Next.js</span> e <span>.NET</span>. Sou formado em
+					Engenharia de Controle e Automação e trabalhei por mais de 2
+					anos como Analista Industrial quando decidi seguir minha
+					carreira como Dev.
 				</Typography>
 				<Typography
 					variant='p'
@@ -69,12 +69,12 @@ export const about = [
 					variant='p'
 					color={(theme) => theme.palette.text.dark}
 				>
-					I am a self-learning and passionate Frontend Developer with
-					over 1 year of experience building modern web applications
-					with <span>React</span> and <span>Next.js</span>. I have a
-					bachelor degree in Automation Engineering and worked over 2
-					years as Industrial Analyst when I decided to pursue my
-					career as Software Developer.
+					I am a self-learning and passionate Developer with over 1
+					year of experience building modern web applications with{' '}
+					<span>React</span>, <span>Next.js</span> and{' '}
+					<span>.NET</span>. I have a bachelor degree in Automation
+					Engineering and worked over 2 years as Industrial Analyst
+					when I decided to pursue my career as a Dev.
 				</Typography>
 				<Typography
 					variant='p'
@@ -82,7 +82,7 @@ export const about = [
 				>
 					I am always studying, creating and maintaining websites for
 					customers. I attempt to improve my programming skills every
-					day to become an experienced Full Stack developer.
+					day to become an experienced Full Stack Developer.
 				</Typography>
 				<Typography
 					variant='p'
