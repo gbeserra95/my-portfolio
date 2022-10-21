@@ -35,6 +35,38 @@ export const projects = [
 	},
 	{
 		locale: 'pt-BR',
+		title: 'Coffee Delivery',
+		category: 'Projeto Pessoal',
+		description:
+			'Esta aplicação é uma simulação de uma Loja Virtual de Cafés e foi desenvolvida com o objetivo de aplicar os conhecimentos de React vistos durante o curso Ignite da Rocketseat.',
+		stacks: [
+			'React',
+			'TypeScript',
+			'React Hook Form',
+			'useReducer',
+		],
+		github: 'https://github.com/gbeserra95/coffee-delivery',
+		link: 'https://coffee-delivery-lemon.vercel.app/',
+		preview: '/assets/images/projects/coffee-delivery.png',
+	},
+	{
+		locale: 'en',
+		title: 'Coffee Delivery',
+		category: 'Projeto Pessoal',
+		description:
+			'This application is a simulation of a Virtual Coffee Shop and was developed with the aim of applying React knowledge during Rocketseat\'s Ignite course.',
+		stacks: [
+			'React',
+			'TypeScript',
+			'React Hook Form',
+			'useReducer',
+		],
+		github: 'https://github.com/gbeserra95/coffee-delivery',
+		link: 'https://coffee-delivery-lemon.vercel.app/',
+		preview: '/assets/images/projects/coffee-delivery.png',
+	},
+	{
+		locale: 'pt-BR',
 		title: 'Meu Portfólio',
 		category: 'Projeto Pessoal',
 		description:
